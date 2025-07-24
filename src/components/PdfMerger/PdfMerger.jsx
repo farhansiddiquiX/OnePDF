@@ -24,7 +24,7 @@ export default function PdfMerger() {
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
-    useSensor(TouchSensor) // for mobile drag support
+    useSensor(TouchSensor)
   );
 
   const onFilesAdded = (e) => {
@@ -44,9 +44,10 @@ export default function PdfMerger() {
 
   const handleDragEnd = (event) => {
     const { active, over } = event;
-    if (active.id !== over.id) {
-      const oldIndex = files.findIndex((item) => item.id === active.id);
-      const newIndex = files.findIndex((item) => item.id === over.id);
+    if (active.id !== over?.id) return;
+    const oldIndex = files.findIndex((item) => item.id === active.id);
+    const newIndex = files.findIndex((item) => item.id === over.id);
+    if (oldIndex !== -1 && newIndex !== -1) {
       setFiles((files) => arrayMove(files, oldIndex, newIndex));
     }
   };
@@ -57,26 +58,39 @@ export default function PdfMerger() {
 
   const mergeAndDownload = async () => {
     if (files.length < 2) return alert('Select at least 2 PDFs');
-    const merged = await PDFDocument.create();
-    for (let { file } of files) {
-      const buf = await file.arrayBuffer();
-      const doc = await PDFDocument.load(buf);
-      const pages = await merged.copyPages(doc, doc.getPageIndices());
-      pages.forEach((p) => merged.addPage(p));
+
+    try {
+      const merged = await PDFDocument.create();
+      for (let { file } of files) {
+        const buf = await file.arrayBuffer();
+        const doc = await PDFDocument.load(buf);
+        const pages = await merged.copyPages(doc, doc.getPageIndices());
+        pages.forEach((p) => merged.addPage(p));
+      }
+      const bytes = await merged.save();
+      const blob = new Blob([bytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'merged.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      setTimeout(() => {
+        window.open(url, '_blank');
+        URL.revokeObjectURL(url);
+      }, 500);
+    } catch (error) {
+      alert('Failed to merge. Please try again.');
+      console.error(error);
     }
-    const bytes = await merged.save();
-    const blob = new Blob([bytes], { type: 'application/pdf' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'merged.pdf';
-    a.click();
-    URL.revokeObjectURL(url);
   };
 
   return (
     <div className="pdf-merger">
-      <h2>PDF Merger</h2>
+      <h2>OnePDF - Merge PDFs Easily</h2>
       <div
         className="drop-zone"
         onDragOver={(e) => e.preventDefault()}
