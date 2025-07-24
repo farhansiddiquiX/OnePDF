@@ -1,0 +1,106 @@
+/* Footer.css */
+.footer {
+  background-color: #000000;
+  color: #f1f1f1;
+  padding: 2rem 1rem 1rem;
+  font-family: sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #000000;
+}
+
+.footer-section {
+  background-color: #000000;
+  flex: 1 1 200px;
+}
+
+.footer-section h4 {
+  background-color: #000000;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-section p {
+  background-color: #000000;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-section a {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+  font-size: 0.9rem;
+  background-color: #000000;
+}
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0.5rem 1rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-section {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 0.5rem 1rem;
+  }
+
+  .footer-content {
+    gap: 1rem;
+  }
+
+  .footer-section h4 {
+    font-size: 1.1rem;
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 0.85rem;
+  }
+
+  .icon {
+    font-size: 1rem;
+    margin-right: 0.3rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    padding-top: 0.75rem;
+  }
+}

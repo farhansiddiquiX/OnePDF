@@ -1,0 +1,130 @@
+.ad-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.ad-img img{
+    height: 35rem;
+    width: 35rem;
+}
+.ad-text h1{
+    font-size: 3rem;
+    color: rgb(58, 56, 56);
+}
+.ad-text p{
+    font-size: 0.9rem;
+}
+.ad-text img{
+    height: 2rem;
+    align-self: flex-start;
+}
+.usecases-cont {
+    text-align: center;
+    padding: 2rem;
+}
+
+.usecases-cont h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: rgb(58, 56, 56);
+}
+
+.usecases-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.usecase-card {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 12px;
+    width: 18rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.usecase-card:hover {
+    transform: scale(1.05);
+}
+
+.usecase-card img {
+    height: 6rem;
+    margin-bottom: 1rem;
+}
+
+.usecase-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: rgb(58, 56, 56);
+}
+
+.usecase-card p {
+    font-size: 0.9rem;
+    color: #555;
+}
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+  .ad-cont {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+  .ad-img img {
+    height: 20rem;
+    width: 100%;
+    max-width: 20rem;
+  }
+  .ad-text h1 {
+    font-size: 2.5rem;
+  }
+  .usecases-cards {
+    gap: 1rem;
+  }
+  .usecase-card {
+    width: 14rem;
+  }
+}
+
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .ad-cont {
+    padding: 1rem;
+  }
+  .ad-text h1 {
+    font-size: 2rem;
+  }
+  .ad-text p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+  .ad-img img {
+    height: 16rem;
+    max-width: 16rem;
+  }
+  .usecases-cont h2 {
+    font-size: 1.5rem;
+  }
+  .usecases-cards {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .usecase-card {
+    width: 100%;
+    max-width: 18rem;
+    margin: 0 auto;
+  }
+  .usecase-icon {
+    font-size: 2.5rem;
+  }
+  .usecase-card h3 {
+    font-size: 1.1rem;
+  }
+  .usecase-card p {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,39 @@
+.nav img{
+    height: 4rem;
+    width: 12rem;
+    background: #000000;
+}
+.nav{
+    background: #000000;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border: 1px solid rgb(42, 41, 41);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+}
+.contact{
+    cursor: pointer;
+    border: none;
+    background: rgb(255, 255, 255);
+    padding: 1rem;
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+    margin-right: 1rem;
+    text-decoration: none;
+}
+@media (max-width: 600px) {
+  .nav img {
+    height: 2.5rem;
+    width: 6rem;
+  }
+  .contact {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    margin-right: 0.25rem;
+  }
+}
